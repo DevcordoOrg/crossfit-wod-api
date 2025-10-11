@@ -1,11 +1,10 @@
 import type { Request, Response } from "express";
 import workoutService from "../services/workoutService.js";
 import type { Workout } from "../types/workoutTypes.js";
-import { error } from "console";
 
 export const getAllWorkouts = (req: Request, res: Response) => {
     try {
-        const allWorkouts = workoutService.getAllWorkouts();
+        const allWorkouts = workoutService.getAllWorkouts({mode: req.query.mode as string});
         res.send({status: "SUCCESS", results: allWorkouts.length,data: {workouts: allWorkouts}});      
     } catch (error: any) {
         res.status(error?.status || 500).send({status: "FAILED", data: { error: error?.message || error }})
@@ -13,7 +12,7 @@ export const getAllWorkouts = (req: Request, res: Response) => {
 };
 
 export const getOneWorkout = (req: Request, res: Response) => {
-        const { workoutId } = req.params;    
+        const { workoutId } = req.params;
         if (!workoutId) 
             res.status(400).send({ status: "FAIL", data: "Workout ID is required" });
     

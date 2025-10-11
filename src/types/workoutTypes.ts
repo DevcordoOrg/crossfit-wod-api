@@ -9,6 +9,25 @@ export interface Workout {
     updatedAt?: string;
 }
 
+export interface Record {
+    id?: string;
+    workout: string;
+    record: string;
+    memberId: string;
+    member: string;
+}
+
+// export interface Member {
+//     id?: string;
+//     name: string;
+//     gender: string;
+//     dateOfBirth: string;
+//     email: string;
+//     password: string;
+// }
+
 export interface Database {
     workouts: Workout[];
+    records: Record[];
+    // members: Member[];
 }

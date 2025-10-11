@@ -1,9 +1,13 @@
-import { throws } from "assert";
 import rawDB from "./db.json" with { type: "json" };
 import { saveToDatabase } from "./utils.js";
-const getAllWorkouts = () => {
+const getAllWorkouts = (filterParams) => {
     const DB = rawDB;
-    return DB.workouts;
+    let workouts = DB.workouts;
+    if (filterParams.mode) {
+        console.log(`getAllWorkout: Recibio el mode ${filterParams.mode.toLowerCase()}`);
+        return workouts.filter((workout) => workout.mode.toLowerCase().includes(filterParams.mode.toLowerCase()));
+    }
+    return workouts;
 };
 const getOneWorkout = (workoutId) => {
     const DB = rawDB;

@@ -1,8 +1,7 @@
 import workoutService from "../services/workoutService.js";
-import { error } from "console";
 export const getAllWorkouts = (req, res) => {
     try {
-        const allWorkouts = workoutService.getAllWorkouts();
+        const allWorkouts = workoutService.getAllWorkouts({ mode: req.query.mode });
         res.send({ status: "SUCCESS", results: allWorkouts.length, data: { workouts: allWorkouts } });
     }
     catch (error) {

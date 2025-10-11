@@ -1,9 +1,8 @@
 import { v7 as uuid } from "uuid";
 import Workoutdb from "../database/Workout.js";
-import { on } from "events";
-export const getAllWorkouts = () => {
+export const getAllWorkouts = (filterParams) => {
     try {
-        const allWorkouts = Workoutdb.getAllWorkouts();
+        const allWorkouts = Workoutdb.getAllWorkouts(filterParams);
         return allWorkouts;
     }
     catch (error) {

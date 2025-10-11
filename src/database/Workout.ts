@@ -1,11 +1,20 @@
-import { throws } from "assert";
 import type { Database, Workout } from "../types/workoutTypes.js";
 import rawDB from "./db.json" with { type: "json" };
 import {saveToDatabase} from "./utils.js";
 
-const getAllWorkouts = (): Workout[] => {
+const getAllWorkouts = (filterParams: any): Workout[] => {
     const DB: Database = rawDB;
-    return DB.workouts;
+
+    let workouts: Workout[] = DB.workouts;
+
+    if (filterParams.mode) {
+        console.log(`getAllWorkout: Recibio el mode ${filterParams.mode.toLowerCase()}`)
+        return workouts.filter((workout) =>
+            workout.mode.toLowerCase().includes(filterParams.mode.toLowerCase())
+        );
+    }
+
+    return workouts;
 };
 
 const getOneWorkout = (workoutId: string): Workout | undefined => {
