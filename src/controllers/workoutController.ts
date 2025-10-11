@@ -26,8 +26,6 @@ export const getOneWorkout = (req: Request, res: Response) => {
 
 export const createNewWorkout = (req: Request, res: Response) => {
         const { body } = req;
-
-        // console.log(body);
     
         if (
             !body.name || 
