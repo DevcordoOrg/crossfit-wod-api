@@ -1,3 +1,4 @@
+import { v7 as uuid } from "uuid";
 import Memberdb from "../database/Member.js";
 export const getAllMembers = () => {
     try {
@@ -15,7 +16,20 @@ export const getOneMember = (memberId) => {
     const oneMember = Memberdb.getOneMember(memberId);
     return oneMember;
 };
+export const createNewMember = (newMember) => {
+    const memberToInsert = {
+        id: uuid(),
+        ...newMember,
+        createdAt: new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }),
+        updatedAt: new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }),
+    };
+    console.log("Create member service - IN ---");
+    const createdMember = Memberdb.createNewMember(memberToInsert);
+    console.log("Create member service - OUT");
+    return createdMember;
+};
 export default {
     getAllMembers,
-    getOneMember
+    getOneMember,
+    createNewMember
 };

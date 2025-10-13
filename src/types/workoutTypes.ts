@@ -15,6 +15,8 @@ export interface Record {
     record: string;
     memberId: string;
     member: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface Member {
@@ -24,6 +26,8 @@ export interface Member {
     dateOfBirth: string;
     email: string;
     password: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface Database {

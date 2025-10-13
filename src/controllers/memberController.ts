@@ -4,6 +4,7 @@ import type { Member } from "../types/workoutTypes.js";
 
 export const getAllMembers = (req: Request, res: Response) => {
     try {
+        console.log("Create member Controller - IN")
         const allMembers = memberService.getAllMembers();
         res.send({status: "SUCCESS", results: allMembers.length, data: {members: allMembers}});
     } catch (error: any) {
@@ -24,8 +25,39 @@ export const getOneMember = (req: Request, res: Response) => {
     }
 }
 
+export const createNewMember = (req: Request, res: Response) => {
+    const { name, gender, dateOfBirth, email, password } = req.body;
+
+    if (
+        !name ||
+        !gender ||
+        !dateOfBirth ||
+        !email ||
+        !password
+    ){
+        res.status(400).send({status: "FAILED", data: "The fields name, gender, dateOfBirth, email and password are required" }); 
+    }
+
+    const newMember: Member = {
+        name: name,
+        gender: gender,
+        dateOfBirth: dateOfBirth,
+        email: email,
+        password: password
+    }
+
+    try {
+        console.log("Create Member Controller - IN")
+        const createdMember = memberService.createNewMember(newMember);
+        console.log("Create member Controller - OUT")
+        res.status(201).send({status: "SUCCESS", data: {member: createdMember}});
+    } catch (error: any) {
+        res.status(error?.status || 500).send({status: "FAILED", data: { error: error?.message || error}});        
+    }
+}
+
 export default {
     getAllMembers,
-    getOneMember
-
+    getOneMember,
+    createNewMember
 };

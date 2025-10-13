@@ -1,3 +1,4 @@
+import {v7 as uuid} from "uuid";
 import Memberdb from "../database/Member.js";
 import type { Member } from "../types/workoutTypes.js";
 
@@ -18,7 +19,25 @@ export const getOneMember = (memberId: string): Member | undefined => {
     return oneMember;
 }
 
+export const createNewMember = (newMember: Member) => {
+    const memberToInsert: Required<Member> = {
+        id: uuid(),
+        ...newMember,
+        createdAt: new Date().toLocaleString("en-US", {timeZone: "America/Bogota"}),
+        updatedAt: new Date().toLocaleString("en-US", {timeZone: "America/Bogota"}),
+    }
+
+    console.log("Create member service - IN ---")
+
+    const createdMember = Memberdb.createNewMember(memberToInsert);
+
+    console.log("Create member service - OUT")
+
+    return createdMember;
+}
+
 export default {
     getAllMembers,
-    getOneMember
+    getOneMember,
+    createNewMember
 };
