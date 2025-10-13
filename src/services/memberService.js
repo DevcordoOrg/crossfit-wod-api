@@ -23,9 +23,7 @@ export const createNewMember = (newMember) => {
         createdAt: new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }),
         updatedAt: new Date().toLocaleString("en-US", { timeZone: "America/Bogota" }),
     };
-    console.log("Create member service - IN ---");
     const createdMember = Memberdb.createNewMember(memberToInsert);
-    console.log("Create member service - OUT");
     return createdMember;
 };
 export default {

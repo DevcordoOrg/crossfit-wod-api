@@ -38,9 +38,7 @@ export const createNewMember = (req, res) => {
         password: password
     };
     try {
-        console.log("Create Member Controller - IN");
         const createdMember = memberService.createNewMember(newMember);
-        console.log("Create member Controller - OUT");
         res.status(201).send({ status: "SUCCESS", data: { member: createdMember } });
     }
     catch (error) {

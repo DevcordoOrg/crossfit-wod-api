@@ -19,31 +19,23 @@ const getOneMember = (memberId: string): Member | undefined => {
 }
 
 const createNewMember = (newMember: Required<Member>) => {
-    console.log("Create Member MemberDB - IN")
     const DB: Database = rawDB;
     
-    console.log("Create Member MemberDB - IN-2")
-    const isAlredyAdded: Boolean = DB.members.findIndex(
+    const isAlredyAdded: boolean = DB.members.some(
         (member) => member.name === newMember.name
-    ) > -1;
+    );
 
-    console.log("Create Member MemberDB - IN-3")
     if(isAlredyAdded){
-        console.log("Create Member MemberDB - IN - 3.1")
         throw{
             status: 500,
             message: "Member already exists"
         }.message;
     }
 
-    console.log("Create Member MemberDB - IN-4")
     try {
-        console.log("Create Member MemberDB - IN-5")
         DB.members.push(newMember);
-        console.log("Create Member MemberDB - IN-6")
         saveToDatabase(DB);
-        console.log("Create Member MemberDB - OUT")
-
+    
         return newMember;
     } catch (error) {
         throw{

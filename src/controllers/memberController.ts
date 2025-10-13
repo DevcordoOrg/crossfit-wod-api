@@ -47,9 +47,7 @@ export const createNewMember = (req: Request, res: Response) => {
     }
 
     try {
-        console.log("Create Member Controller - IN")
         const createdMember = memberService.createNewMember(newMember);
-        console.log("Create member Controller - OUT")
         res.status(201).send({status: "SUCCESS", data: {member: createdMember}});
     } catch (error: any) {
         res.status(error?.status || 500).send({status: "FAILED", data: { error: error?.message || error}});        
