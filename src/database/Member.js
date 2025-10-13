@@ -11,7 +11,29 @@ const getOneMember = (memberId) => {
     const oneMember = DB.members.find((member) => member.id === memberId);
     return oneMember;
 };
+const createNewMember = (newMember) => {
+    const DB = rawDB;
+    const isAlredyAdded = DB.members.some((member) => member.name === newMember.name);
+    if (isAlredyAdded) {
+        throw {
+            status: 500,
+            message: "Member already exists"
+        }.message;
+    }
+    try {
+        DB.members.push(newMember);
+        saveToDatabase(DB);
+        return newMember;
+    }
+    catch (error) {
+        throw {
+            status: 500,
+            message: error
+        }.message;
+    }
+};
 export default {
     getAllMembers,
-    getOneMember
+    getOneMember,
+    createNewMember
 };
