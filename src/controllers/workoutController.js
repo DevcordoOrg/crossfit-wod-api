@@ -22,7 +22,6 @@ export const getOneWorkout = (req, res) => {
 };
 export const createNewWorkout = (req, res) => {
     const { body } = req;
-    // console.log(body);
     if (!body.name ||
         !body.mode ||
         !body.equipment ||
