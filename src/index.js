@@ -25,4 +25,5 @@ app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation));
 app.use("/api/v1/workouts", v1WorkoutRouter);
 app.listen(PORT, () => {
     console.log(`🖥️ Server listening on port ${PORT}`);
+    console.log(`📚 Version 1 Docs available at http://localhost:${PORT}/api/v1/docs`);
 });
