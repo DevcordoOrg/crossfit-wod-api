@@ -13,6 +13,12 @@ export const getAllMembers = () => {
     }
 }
 
+export const getOneMember = (memberId: string): Member | undefined => {
+    const oneMember: Member | undefined = Memberdb.getOneMember(memberId);
+    return oneMember;
+}
+
 export default {
-    getAllMembers
+    getAllMembers,
+    getOneMember
 };

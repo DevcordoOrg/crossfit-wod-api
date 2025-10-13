@@ -9,6 +9,16 @@ const getAllMembers = (): Member[] => {
     return DB.members;
 };
 
+const getOneMember = (memberId: string): Member | undefined => {
+    const DB: Database = rawDB;
+
+    const oneMember: Member | undefined = DB.members.find(
+        (member) => member.id === memberId
+    );
+    return oneMember;
+} 
+
 export default {
-    getAllMembers
+    getAllMembers,
+    getOneMember
 };

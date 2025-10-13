@@ -11,6 +11,11 @@ export const getAllMembers = () => {
         }).message;
     }
 };
+export const getOneMember = (memberId) => {
+    const oneMember = Memberdb.getOneMember(memberId);
+    return oneMember;
+};
 export default {
-    getAllMembers
+    getAllMembers,
+    getOneMember
 };
