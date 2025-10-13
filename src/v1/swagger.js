@@ -13,7 +13,7 @@ const doc = {
         },
     },
     host: "localhost:3000",
-    basePath: "/api/v1/workout",
+    basePath: "/api/v1/workouts",
     schemes: ["http"]
 };
 // Auto
