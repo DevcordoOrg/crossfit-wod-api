@@ -17,17 +17,17 @@ export interface Record {
     member: string;
 }
 
-// export interface Member {
-//     id?: string;
-//     name: string;
-//     gender: string;
-//     dateOfBirth: string;
-//     email: string;
-//     password: string;
-// }
+export interface Member {
+    id?: string;
+    name: string;
+    gender: string;
+    dateOfBirth: string;
+    email: string;
+    password: string;
+}
 
 export interface Database {
     workouts: Workout[];
     records: Record[];
-    // members: Member[];
+    members: Member[];
 }
