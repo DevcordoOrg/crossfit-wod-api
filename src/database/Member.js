@@ -6,6 +6,12 @@ const getAllMembers = () => {
     console.log("MemberDB-Out");
     return DB.members;
 };
+const getOneMember = (memberId) => {
+    const DB = rawDB;
+    const oneMember = DB.members.find((member) => member.id === memberId);
+    return oneMember;
+};
 export default {
-    getAllMembers
+    getAllMembers,
+    getOneMember
 };
