@@ -15,19 +15,23 @@ export interface Record {
     record: string;
     memberId: string;
     member: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
-// export interface Member {
-//     id?: string;
-//     name: string;
-//     gender: string;
-//     dateOfBirth: string;
-//     email: string;
-//     password: string;
-// }
+export interface Member {
+    id?: string;
+    name: string;
+    gender: string;
+    dateOfBirth: string;
+    email: string;
+    password: string;
+    createdAt?: string;
+    updatedAt?: string;
+}
 
 export interface Database {
     workouts: Workout[];
     records: Record[];
-    // members: Member[];
+    members: Member[];
 }
